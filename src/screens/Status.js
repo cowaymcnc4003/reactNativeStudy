@@ -11,25 +11,22 @@ const Status = ({ route, navigation }) => {
     outputRange: ['0%', '100%'],
   });
 
-  // useEffect(() => {
-  //   let timer = setTimeout(() => {
-  //     navigation.goBack();
-  //   }, 5000);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, []);
-
   useEffect(() => {
     Animated.timing(progress, {
       toValue: 5,
-      duration: 5000,
       useNativeDriver: false,
+      duration: 5000,
     }).start();
+
+    let timer = setTimeout(() => {
+      navigation.goBack();
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+
   }, []);
-
-
 
   return (
     <SafeAreaView
@@ -52,9 +49,9 @@ const Status = ({ route, navigation }) => {
       >
         <Animated.View
           style={{
+            backgroundColor: 'white',
             width: progressAnimation,
             height: '100%',
-            backgroundColor: 'white',
           }}
         />
       </View>
