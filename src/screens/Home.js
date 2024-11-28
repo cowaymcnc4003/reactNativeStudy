@@ -8,7 +8,7 @@ import Posts from '../components/Posts';
 
 const Home = () => {
   return (
-    <SafeAreaView style={{ backgroundColor: 'white' }}>
+    <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <View style={{
         flexDirection: 'row',
