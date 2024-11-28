@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, StatusBar, Image, Animated } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
@@ -10,22 +10,19 @@ const Status = ({ route, navigation }) => {
     inputRange: [0, 5],
     outputRange: ['0%', '100%'],
   });
-
   useEffect(() => {
+    progress.addListener(({ value }) => {
+      console.log(`value ${value}`);
+    });
     Animated.timing(progress, {
       toValue: 5,
-      useNativeDriver: false,
       duration: 5000,
+      useNativeDriver: false,
     }).start();
 
-    let timer = setTimeout(() => {
+    setTimeout(() => {
       navigation.goBack();
     }, 5000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-
   }, []);
 
   return (
@@ -49,9 +46,9 @@ const Status = ({ route, navigation }) => {
       >
         <Animated.View
           style={{
-            backgroundColor: 'white',
             width: progressAnimation,
             height: '100%',
+            backgroundColor: 'white',
           }}
         />
       </View>
