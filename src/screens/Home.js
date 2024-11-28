@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import { ScrollView, StatusBar, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
@@ -9,7 +9,7 @@ import Posts from '../components/Posts';
 const Home = () => {
   return (
     <SafeAreaView style={{ backgroundColor: 'white' }}>
-      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       <View style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -36,8 +36,10 @@ const Home = () => {
           <Feather name="navigation" style={{ fontSize: 24 }} />
         </View>
       </View>
-      <Stories />
-      <Posts />
+      <ScrollView>
+        <Stories />
+        <Posts />
+      </ScrollView>
     </SafeAreaView >
   );
 };
