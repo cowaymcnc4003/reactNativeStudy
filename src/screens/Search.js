@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, TextInput } from 'react-native';
 import React from 'react';
 import SearchInput from '../components/SearchInput';
 import ProfileBody from '../components/ProfileBody';
@@ -38,6 +38,19 @@ const Search = () => {
               return <ProfileRecommend key={index} data={data} />;
             })}
           </ScrollView>
+          <Text style={{
+            fontWeight: 'bold',
+            color: 'black',
+            paddingVertical: 10,
+          }}>입력 영역</Text>
+          <View style={{ paddingVertical: 10 }}>
+            <Text style={{ opacity: 0.5 }}>이름</Text>
+            <TextInput placeholder="이름 입력" style={{
+              fontSize: 15,
+              borderBottomColor: '#CDCDCD',
+              borderBottomWidth: 1,
+            }} />
+          </View>
         </View>
       </View>
     </SafeAreaView>
