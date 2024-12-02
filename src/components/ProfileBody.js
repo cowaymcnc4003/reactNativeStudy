@@ -1,7 +1,7 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-const ProfileBody = ({ profileData }) => {
+const ProfileBody = ({ profileData, getImage }) => {
 
   return (
     <View>
@@ -14,12 +14,20 @@ const ProfileBody = ({ profileData }) => {
         <View style={{
           alignItems: 'center',
         }}>
-          <Image style={{
-            width: 60,
-            height: 60,
-            borderRadius: 100,
+          <TouchableOpacity
+            onPressIn={() => {
+              console.log(JSON.stringify(profileData));
+              getImage(profileData.profileImage);
+            }}
+            onPressOut={() => { getImage(null); }}
+          >
+            <Image style={{
+              width: 60,
+              height: 60,
+              borderRadius: 100,
 
-          }} source={profileData.profileImage} />
+            }} source={profileData.profileImage} />
+          </TouchableOpacity>
           <Text style={{
             fontWeight: 'bold',
             color: 'black',
